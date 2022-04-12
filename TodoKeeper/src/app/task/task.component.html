@@ -1,1 +1,8 @@
-<p>task works!</p>
+<div class="row justify-content-end">
+    <div *ngFor="let task of tasks">
+        <div class="d-flex flex-column">
+            <div class="p-2">{{task.description}}</div>
+        </div>
+        
+    </div>
+</div>
