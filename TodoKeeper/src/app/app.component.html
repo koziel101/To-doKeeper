@@ -8,12 +8,23 @@
     </div>
   </div>
   <div class="container-card">
+
+    <div class="d-flex justify-content-center">
+      <div *ngIf="containsTask; else noTask"></div>
+      <ng-template #noTask>
+        <p>No tasks created</p>
+      </ng-template>
+    </div>
+
     <ul class="list-group" *ngFor="let task of tasks; let i = index">
       <div class="d-flex justify-content-center">
-        <li class="list-group-item">{{task}}
-          <button class="btn btn-danger" style="float: right;" type="button" (click)="deleteTask(i)">Remove Task</button>
+        <li class="list-group-item">
+          {{task}}
+          <button class="btn btn-danger" style="float: right;" type="button" (click)="deleteTask(i)">Remove
+            Task</button>
         </li>
       </div>
     </ul>
+
   </div>
 </div>
