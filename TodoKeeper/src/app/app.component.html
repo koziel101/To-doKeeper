@@ -1,24 +1,19 @@
 <div class="main-container container">
   <div class="row justify-content-end">
     <div class="col-4">
-      <input [(ngModel)]="newTask" type="text" class="form-control" >
+      <input [(ngModel)]="newTask" type="text" class="form-control">
     </div>
     <div class="col-4">
       <button class="btn btn-primary" (click)="addTask()">Add</button>
     </div>
   </div>
-
-  <div class="row justify-content-end">
-    <div class="col-6">
-
-      <div class="row justify-content-end">
-        <div *ngFor="let task of tasks">
-          <div class="d-flex flex-column">
-            <div class="p-2">{{task}}</div>
-          </div>
-        </div>
+  <div class="container-card">
+    <ul class="list-group" *ngFor="let task of tasks; let i = index">
+      <div class="d-flex justify-content-center">
+        <li class="list-group-item">{{task}}
+          <button class="btn btn-danger" style="float: right;" type="button" (click)="deleteTask(i)">Remove Task</button>
+        </li>
       </div>
-
-    </div>
+    </ul>
   </div>
 </div>
