@@ -10,7 +10,8 @@ export class AppComponent {
 
   public tasks: string[] = [];
   public newTask = "";
-  containsTask = false;
+  public containsTask = false;
+  public taskDone = false;
 
   public addTask() {
     if (this.newTask != '') {
@@ -24,6 +25,14 @@ export class AppComponent {
     this.tasks.splice(position, 1);
     if (this.tasks.length === 0) {
       this.containsTask = false;
+    }
+  }
+
+  public taskDoneUndone() {
+    if (this.taskDone) {
+      this.taskDone = false;
+    } else {
+      this.taskDone = true;
     }
   }
 }

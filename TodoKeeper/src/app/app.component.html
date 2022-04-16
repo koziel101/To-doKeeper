@@ -19,7 +19,10 @@
     <ul class="list-group" *ngFor="let task of tasks; let i = index">
       <div class="d-flex justify-content-center">
         <li class="list-group-item">
-          {{task}}
+          <input type="checkbox" class="form-check-input" (click)="taskDoneUndone()">
+          <span [ngStyle]="{'textDecoration' : taskDone === true ? 'line-through' : 'none'}">
+            {{task}}
+          </span>
           <button class="btn btn-danger" style="float: right;" type="button" (click)="deleteTask(i)">Remove
             Task</button>
         </li>
