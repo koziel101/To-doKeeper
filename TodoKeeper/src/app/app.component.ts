@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TodoKeeper';
+
+  public tasks : string[] = [];
+  public newTask = "";
+
+  public addTask() {
+    if (this.newTask != '') {
+      this.tasks.push(this.newTask);
+      this.newTask = '';
+    }
+  }
 }
