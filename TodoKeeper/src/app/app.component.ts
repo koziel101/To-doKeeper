@@ -8,31 +8,42 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'TodoKeeper';
 
-  public tasks: string[] = [];
-  public newTask = "";
-  public containsTask = false;
-  public taskDone = false;
+  // public tasks: string[] = [];
+  // public newTask = "";
+  // public containsTask = false;
+  // public taskDone = false;
 
-  public addTask() {
-    if (this.newTask != '') {
-      this.tasks.push(this.newTask);
-      this.newTask = '';
-      this.containsTask = true;
-    }
+
+  taskElements = [{ description: "", isDone: false }];
+
+
+  onTaskCreated(taskData: { taskDescription: string }) {
+    this.taskElements.push({
+      description: taskData.taskDescription,
+      isDone: false
+    });
   }
 
-  public deleteTask(position: number) {
-    this.tasks.splice(position, 1);
-    if (this.tasks.length === 0) {
-      this.containsTask = false;
-    }
-  }
+  // public addTask() {
+  //   if (this.newTask != '') {
+  //     this.tasks.push(this.newTask);
+  //     this.newTask = '';
+  //     this.containsTask = true;
+  //   }
+  // }
 
-  public taskDoneUndone() {
-    if (this.taskDone) {
-      this.taskDone = false;
-    } else {
-      this.taskDone = true;
-    }
-  }
+  // public deleteTask(position: number) {
+  //   this.tasks.splice(position, 1);
+  //   if (this.tasks.length === 0) {
+  //     this.containsTask = false;
+  //   }
+  // }
+
+  // public taskDoneUndone() {
+  //   if (this.taskDone) {
+  //     this.taskDone = false;
+  //   } else {
+  //     this.taskDone = true;
+  //   }
+  // }
 }

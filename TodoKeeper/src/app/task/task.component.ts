@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Task } from './task.model';
 
 @Component({
@@ -9,10 +9,12 @@ import { Task } from './task.model';
 export class TaskComponent implements OnInit {
 
   // tasks: Task[] = [];
-  tasks: Task[] = [
-    new Task("Descricao 1"),
-    new Task ("Testt")
-  ];
+  // tasks: Task[] = [
+  //   new Task("Descricao 1"),
+  //   new Task ("Testt")
+  // ];
+
+  @Input('taskElement') element: { description: string; isDone: boolean; };
 
   constructor() { }
 
