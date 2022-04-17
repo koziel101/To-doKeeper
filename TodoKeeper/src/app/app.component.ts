@@ -8,29 +8,19 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'TodoKeeper';
 
-  // public tasks: string[] = [];
   // public newTask = "";
-  // public containsTask = false;
+  public containsTask = false;
   // public taskDone = false;
 
-
-  taskElements = [{ description: "", isDone: false }];
-
+  taskElements: { description: string, isDone: boolean }[] = [];
 
   onTaskCreated(taskData: { taskDescription: string }) {
     this.taskElements.push({
       description: taskData.taskDescription,
       isDone: false
     });
+    this.containsTask = true;
   }
-
-  // public addTask() {
-  //   if (this.newTask != '') {
-  //     this.tasks.push(this.newTask);
-  //     this.newTask = '';
-  //     this.containsTask = true;
-  //   }
-  // }
 
   // public deleteTask(position: number) {
   //   this.tasks.splice(position, 1);
