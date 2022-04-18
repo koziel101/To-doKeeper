@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TaskComponent } from './task/task.component';
 import { HeaderComponent } from './header/header.component';
+import { TaskDataService } from './task-data.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [TaskDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

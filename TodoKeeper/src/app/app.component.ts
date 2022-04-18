@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskDataService } from './task-data.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'TodoKeeper';
 
-  // public newTask = "";
   public containsTask = false;
-  // public taskDone = false;
+  // taskElements: { description: string, isDone: boolean }[] = [];
 
-  taskElements: { description: string, isDone: boolean }[] = [];
+  public taskElements: { description: string, isDone: boolean }[] = [];
+
+  constructor(private taskDataServ: TaskDataService) {
+    this.taskElements = this.taskDataServ.getList();
+  }
 
   onTaskCreated(taskData: { taskDescription: string }) {
     this.taskElements.push({
