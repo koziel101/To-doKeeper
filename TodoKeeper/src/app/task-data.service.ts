@@ -7,12 +7,13 @@ export class TaskDataService {
 
   constructor() { }
   taskElements: { description: string, isDone: boolean }[] = [];
+  containsTask = false;
 
   getList() {
     return this.taskElements;
   }
 
-  createTask() {
-
+  getContainsTask() {
+    return this.containsTask;
   }
 }

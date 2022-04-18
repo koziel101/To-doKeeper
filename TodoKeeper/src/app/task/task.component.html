@@ -4,17 +4,18 @@
             <span>
                 {{element.description}}
             </span>
-            <button class="btn btn-danger" style="float: right;" type="button">Remove
+            <button class="btn btn-danger" style="float: right;" type="button" >Remove
                 Task</button>
         </li>
+    </div>
+</ul>
 
-        <!--         
+
+<!-- (click)="deleteTask(i)" -->
+<!--         
         <input type="checkbox" class="form-check-input" (click)="taskDoneUndone()">
         <span [ngStyle]="{'textDecoration' : taskDone === true ? 'line-through' : 'none'}">
             {{task}}
         </span>
         <button class="btn btn-danger" style="float: right;" type="button" (click)="deleteTask(i)">Remove
             Task</button> -->
-
-    </div>
-</ul>

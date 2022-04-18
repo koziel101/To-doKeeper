@@ -9,13 +9,14 @@ import { TaskDataService } from './task-data.service';
 export class AppComponent {
   title = 'TodoKeeper';
 
-  public containsTask = false;
+  public containsTask;
   // taskElements: { description: string, isDone: boolean }[] = [];
 
   public taskElements: { description: string, isDone: boolean }[] = [];
 
   constructor(private taskDataServ: TaskDataService) {
     this.taskElements = this.taskDataServ.getList();
+    this.containsTask = this.taskDataServ.getContainsTask();
   }
 
   onTaskCreated(taskData: { taskDescription: string }) {

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TaskDataService } from '../task-data.service';
 import { Task } from './task.model';
 
 @Component({
@@ -16,9 +17,21 @@ export class TaskComponent implements OnInit {
 
   @Input('taskElement') element: { description: string; isDone: boolean; };
 
-  constructor() { }
-
   ngOnInit(): void {
   }
 
+  public taskElements: { description: string, isDone: boolean }[] = [];
+  public containsTask;
+
+  constructor(private taskDataServ: TaskDataService) {
+    this.taskElements = this.taskDataServ.getList();
+    this.containsTask = this.taskDataServ.getContainsTask();
+  }
+
+  public deleteTask(position: number) {
+    this.taskElements.splice(position, 1);
+    if (this.taskElements.length === 0) {
+      this.containsTask = false;
+    }
+  }
 }
