@@ -8,6 +8,7 @@ export class TaskDataService {
   constructor() { }
   taskElements: { description: string, isDone: boolean }[] = [];
   containsTask = false;
+  taskDone = false;
 
   getList() {
     return this.taskElements;
@@ -15,5 +16,9 @@ export class TaskDataService {
 
   getContainsTask() {
     return this.containsTask;
+  }
+
+  getTaskDone() {
+    return this.taskDone;
   }
 }

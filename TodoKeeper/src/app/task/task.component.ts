@@ -22,16 +22,26 @@ export class TaskComponent implements OnInit {
 
   public taskElements: { description: string, isDone: boolean }[] = [];
   public containsTask;
+  public taskDone;
 
   constructor(private taskDataServ: TaskDataService) {
     this.taskElements = this.taskDataServ.getList();
     this.containsTask = this.taskDataServ.getContainsTask();
+    this.taskDone = this.taskDataServ.getTaskDone();
   }
 
   public deleteTask(position: number) {
     this.taskElements.splice(position, 1);
     if (this.taskElements.length === 0) {
       this.containsTask = false;
+    }
+  }
+
+  public taskDoneUndone() {
+    if (this.taskDone) {
+      this.taskDone = false;
+    } else {
+      this.taskDone = true;
     }
   }
 }
