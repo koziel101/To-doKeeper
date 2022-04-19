@@ -1,5 +1,6 @@
 <div class="main-container container">
-  <app-header (taskCreated)="onTaskCreated($event)"></app-header>
+
+  <app-header (createTask)="onTaskCreated($event)"></app-header>
 
   <div class="container-card">
 
@@ -10,7 +11,8 @@
       </ng-template>
     </div>
 
-    <app-task *ngFor="let taskElement of taskElements; let i=index" [taskElement]="taskElement"></app-task>
+    <app-task *ngFor="let taskElement of taskElements; let i=index" [taskElement]="taskElement"
+      (deleteTask)="onTaskDeleted(i)"></app-task>
 
   </div>
 </div>

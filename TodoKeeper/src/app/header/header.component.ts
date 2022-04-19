@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() taskCreated = new EventEmitter<{ taskDescription: string, taskDone: boolean }>();
+  @Output('createTask') taskCreated = new EventEmitter<{ taskDescription: string, taskDone: boolean }>();
   newTaskDescription = '';
   newTaskDone = false;
 

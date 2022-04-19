@@ -11,7 +11,6 @@ export class AppComponent {
   title = 'TodoKeeper';
 
   public containsTask;
-
   public taskElements: Task[] = [];
 
   constructor(private taskDataServ: TaskDataService) {
@@ -24,5 +23,12 @@ export class AppComponent {
     newTaskElement.description = taskData.taskDescription;
     newTaskElement.isDone = false;
     this.taskElements.push(newTaskElement);
+  }
+
+  onTaskDeleted(position: number) {
+    this.taskElements.splice(position, 1);
+    if (this.taskElements.length === 0) {
+      this.containsTask = false;
+    }
   }
 }

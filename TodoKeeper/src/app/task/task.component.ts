@@ -11,12 +11,12 @@ export class TaskComponent implements OnInit {
 
   @Input('taskElement') element: { description: string; isDone: boolean; };
 
-  ngOnInit(): void {
-  }
+  @Output('deleteTask') taskDeleted = new EventEmitter<{ position: number }>();
 
   public taskElements: { description: string, isDone: boolean }[] = [];
   public containsTask;
   public taskDone;
+  newPosition: number;
 
   constructor(private taskDataServ: TaskDataService) {
     this.taskElements = this.taskDataServ.getList();
@@ -24,11 +24,19 @@ export class TaskComponent implements OnInit {
     this.taskDone = this.taskDataServ.getTaskDone();
   }
 
-  public deleteTask(position: number) {
-    this.taskElements.splice(position, 1);
-    if (this.taskElements.length === 0) {
-      this.containsTask = false;
-    }
+  deleteButtonClicked() {
+    this.taskDeleted.emit({
+      position: this.newPosition
+    });
+  }
+
+  ngOnInit(): void {
+  }
+
+  onDeleteTask() {
+    this.taskDeleted.emit({
+      position: this.newPosition
+    });
   }
 
   public taskDoneUndone() {
