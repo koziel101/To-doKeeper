@@ -9,12 +9,6 @@ import { Task } from './task.model';
 })
 export class TaskComponent implements OnInit {
 
-  // tasks: Task[] = [];
-  // tasks: Task[] = [
-  //   new Task("Descricao 1"),
-  //   new Task ("Testt")
-  // ];
-
   @Input('taskElement') element: { description: string; isDone: boolean; };
 
   ngOnInit(): void {

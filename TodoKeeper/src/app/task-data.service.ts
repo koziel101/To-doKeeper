@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Task } from './task/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class TaskDataService {
 
   constructor() { }
-  taskElements: { description: string, isDone: boolean }[] = [];
+  taskElements: Task[] = [];
   containsTask = false;
   taskDone = false;
 

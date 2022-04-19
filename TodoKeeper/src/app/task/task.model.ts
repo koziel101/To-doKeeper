@@ -1,5 +1,6 @@
 export class Task {
     public description: string;
+    public isDone: boolean;
 
     constructor(description: string) {
         this.description = description;
