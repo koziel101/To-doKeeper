@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TaskDataService } from './task-data.service';
+import { Task } from './task/task.model';
 
 @Component({
   selector: 'app-root',
@@ -8,31 +10,25 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'TodoKeeper';
 
-  public tasks: string[] = [];
-  public newTask = "";
-  public containsTask = false;
-  public taskDone = false;
+  public containsTask;
+  public taskElements: Task[] = [];
 
-  public addTask() {
-    if (this.newTask != '') {
-      this.tasks.push(this.newTask);
-      this.newTask = '';
-      this.containsTask = true;
-    }
+  constructor(private taskDataServ: TaskDataService) {
+    this.taskElements = this.taskDataServ.getList();
+    this.containsTask = this.taskDataServ.getContainsTask();
   }
 
-  public deleteTask(position: number) {
-    this.tasks.splice(position, 1);
-    if (this.tasks.length === 0) {
+  onTaskCreated(taskData: { taskDescription: string }) {
+    let newTaskElement: Task = <Task>{};
+    newTaskElement.description = taskData.taskDescription;
+    newTaskElement.isDone = false;
+    this.taskElements.push(newTaskElement);
+  }
+
+  onTaskDeleted(position: number) {
+    this.taskElements.splice(position, 1);
+    if (this.taskElements.length === 0) {
       this.containsTask = false;
-    }
-  }
-
-  public taskDoneUndone() {
-    if (this.taskDone) {
-      this.taskDone = false;
-    } else {
-      this.taskDone = true;
     }
   }
 }

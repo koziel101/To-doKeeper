@@ -1,12 +1,7 @@
 <div class="main-container container">
-  <div class="row justify-content-end">
-    <div class="col-4">
-      <input [(ngModel)]="newTask" type="text" class="form-control">
-    </div>
-    <div class="col-4">
-      <button class="btn btn-primary" (click)="addTask()">Add</button>
-    </div>
-  </div>
+
+  <app-header (createTask)="onTaskCreated($event)"></app-header>
+
   <div class="container-card">
 
     <div class="d-flex justify-content-center">
@@ -16,18 +11,8 @@
       </ng-template>
     </div>
 
-    <ul class="list-group" *ngFor="let task of tasks; let i = index">
-      <div class="d-flex justify-content-center">
-        <li class="list-group-item">
-          <input type="checkbox" class="form-check-input" (click)="taskDoneUndone()">
-          <span [ngStyle]="{'textDecoration' : taskDone === true ? 'line-through' : 'none'}">
-            {{task}}
-          </span>
-          <button class="btn btn-danger" style="float: right;" type="button" (click)="deleteTask(i)">Remove
-            Task</button>
-        </li>
-      </div>
-    </ul>
+    <app-task *ngFor="let taskElement of taskElements; let i=index" [taskElement]="taskElement"
+      (deleteTask)="onTaskDeleted(i)"></app-task>
 
   </div>
 </div>

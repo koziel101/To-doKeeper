@@ -1,8 +1,12 @@
-<div class="row justify-content-end">
-    <div *ngFor="let task of tasks">
-        <div class="d-flex flex-column">
-            <div class="p-2">{{task.description}}</div>
-        </div>
-        
+<ul class="list-group">
+    <div class="d-flex justify-content-center">
+        <li class="list-group-item">
+            <input type="checkbox" class="form-check-input" (click)="taskDoneUndone()">
+            <span [ngStyle]="{'textDecoration' : taskDone === true ? 'line-through' : 'none'}">
+                {{element.description}}
+            </span>
+            <button class="btn btn-danger" style="float: right;" type="button" (click)="onDeleteTask()">Remove
+                Task</button>
+        </li>
     </div>
-</div>
+</ul>

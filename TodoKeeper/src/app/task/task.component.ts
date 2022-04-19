@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TaskDataService } from '../task-data.service';
 import { Task } from './task.model';
 
 @Component({
@@ -8,15 +9,41 @@ import { Task } from './task.model';
 })
 export class TaskComponent implements OnInit {
 
-  // tasks: Task[] = [];
-  tasks: Task[] = [
-    new Task("Descricao 1"),
-    new Task ("Testt")
-  ];
+  @Input('taskElement') element: { description: string; isDone: boolean; };
 
-  constructor() { }
+  @Output('deleteTask') taskDeleted = new EventEmitter<{ position: number }>();
+
+  public taskElements: { description: string, isDone: boolean }[] = [];
+  public containsTask;
+  public taskDone;
+  newPosition: number;
+
+  constructor(private taskDataServ: TaskDataService) {
+    this.taskElements = this.taskDataServ.getList();
+    this.containsTask = this.taskDataServ.getContainsTask();
+    this.taskDone = this.taskDataServ.getTaskDone();
+  }
+
+  deleteButtonClicked() {
+    this.taskDeleted.emit({
+      position: this.newPosition
+    });
+  }
 
   ngOnInit(): void {
   }
 
+  onDeleteTask() {
+    this.taskDeleted.emit({
+      position: this.newPosition
+    });
+  }
+
+  public taskDoneUndone() {
+    if (this.taskDone) {
+      this.taskDone = false;
+    } else {
+      this.taskDone = true;
+    }
+  }
 }
