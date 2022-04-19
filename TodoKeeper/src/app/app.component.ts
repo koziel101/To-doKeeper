@@ -23,6 +23,7 @@ export class AppComponent {
     newTaskElement.description = taskData.taskDescription;
     newTaskElement.isDone = false;
     this.taskElements.push(newTaskElement);
+    this.containsTask = true;
   }
 
   onTaskDeleted(position: number) {
