@@ -9,11 +9,11 @@ import { Task } from './task.model';
 })
 export class TaskComponent implements OnInit {
 
-  @Input('taskElement') element: { description: string; isDone: boolean; };
+  @Input('taskElement') element: Task;
 
   @Output('deleteTask') taskDeleted = new EventEmitter<{ position: number }>();
 
-  public taskElements: { description: string, isDone: boolean }[] = [];
+  public taskElements: Task[] = [];
   public containsTask;
   public taskDone;
   newPosition: number;
@@ -22,12 +22,6 @@ export class TaskComponent implements OnInit {
     this.taskElements = this.taskDataServ.getList();
     this.containsTask = this.taskDataServ.getContainsTask();
     this.taskDone = this.taskDataServ.getTaskDone();
-  }
-
-  deleteButtonClicked() {
-    this.taskDeleted.emit({
-      position: this.newPosition
-    });
   }
 
   ngOnInit(): void {

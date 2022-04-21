@@ -6,7 +6,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
   @Output('createTask') taskCreated = new EventEmitter<{ taskDescription: string, taskDone: boolean }>();
   newTaskDescription = '';
   newTaskDone = false;
@@ -21,5 +20,6 @@ export class HeaderComponent implements OnInit {
       taskDescription: this.newTaskDescription,
       taskDone: this.newTaskDone
     });
+    this.newTaskDescription = "";
   }
 }
